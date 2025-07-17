@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Laptop CPU Prediction</title>
+    <style>
+        body { font-family: Arial; background-color: #f4f4f4; padding: 20px; }
+        .container { max-width: 700px; margin: auto; background: white; padding: 20px; border-radius: 10px; }
+        h2 { color: #333; }
+        label, input { display: block; margin: 10px 0; width: 100%; }
+        button { padding: 10px; width: 100%; background-color: #4CAF50; color: white; border: none; border-radius: 5px; }
+        .result { margin-top: 20px; padding: 10px; background: #e0f7fa; border-radius: 5px; }
+        img { margin-top: 20px; border-radius: 10px; max-width: 100%; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>🔧 Prediksi CPU Usage Laptop</h2>
+        <form method="POST" action="/predict">
+            <label>RAM Usage (%)</label>
+            <input type="number" name="ram" step="0.1" required>
+            <label>Temperature (°C)</label>
+            <input type="number" name="temp" step="0.1" required>
+            <label>Voltage (V)</label>
+            <input type="number" name="volt" step="0.1" required>
+            <label>Disk Usage (%)</label>
+            <input type="number" name="disk" step="0.1" required>
+            <label>Fan Speed (RPM)</label>
+            <input type="number" name="fan" required>
+            <button type="submit">Prediksi CPU Usage</button>
+        </form>
+
+        {% if prediction is defined %}
+        <div class="result">
+            <h3>Hasil Prediksi: {{ prediction }}%</h3>
+        </div>
+        {% endif %}
+
+        {% if plot %}
+        <h3>📊 Visualisasi: Suhu vs CPU Usage</h3>
+        <img src="data:image/png;base64,{{ plot }}">
+        {% endif %}
+    </div>
+</body>
+</html>
