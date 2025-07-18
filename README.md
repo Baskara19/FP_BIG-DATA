@@ -19,4 +19,5 @@ Jalankan perintah berikut di terminal atau command prompt untuk menginstal libra
 ```bash
 python -m pip install flask pandas scikit-learn matplotlib
 python app_flask_chart.py 
+klik : http://127.0.0.1:5000
 
